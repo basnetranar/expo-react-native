@@ -1,8 +1,9 @@
 {
-  "name": "APP_NAME",
-  "slug": "app-slug",
-  "scheme": "app-scheme",
+  "name": "Heist Planner",
+  "slug": "heist-planner",
+  "scheme": "heistplanner",
   "version": "1.0.0",
-  "iosBundleIdentifier": "com.example.app",
-  "androidPackage": "com.example.app"
+  "easProjectId": "9bf727a5-6895-41eb-86f7-aa8e3f88b6ce",
+  "iosBundleIdentifier": "com.challengemelab.heistplanner",
+  "androidPackage": "com.challengemelab.heistplanner"
 }

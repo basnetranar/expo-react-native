@@ -37,4 +37,8 @@ export function validateEnvironment(config: EnvironmentConfig): void {
   }
 }
 
-export const env = createEnvironment(process.env);
+// Expo statically replaces direct EXPO_PUBLIC_* references in application bundles.
+export const env = createEnvironment({
+  EXPO_PUBLIC_APP_ENV: process.env.EXPO_PUBLIC_APP_ENV,
+  EXPO_PUBLIC_API_URL: process.env.EXPO_PUBLIC_API_URL,
+});

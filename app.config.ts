@@ -15,7 +15,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       ? requestedEnvironment
       : 'development';
   const suffix = suffixes[environment];
-  const projectId = process.env.EXPO_PUBLIC_EAS_PROJECT_ID;
+  const projectId = process.env.EXPO_PUBLIC_EAS_PROJECT_ID?.trim() || appConfig.easProjectId;
 
   return {
     ...config,
@@ -34,7 +34,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     android: {
       package: `${appConfig.androidPackage}${suffix.id}`,
       adaptiveIcon: {
-        backgroundColor: '#F2F2F7',
+        backgroundColor: '#091015',
         foregroundImage: './assets/images/android-icon-foreground.png',
         backgroundImage: './assets/images/android-icon-background.png',
         monochromeImage: './assets/images/android-icon-monochrome.png',
@@ -47,7 +47,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         'expo-splash-screen',
         {
-          backgroundColor: '#F2F2F7',
+          backgroundColor: '#091015',
           image: './assets/images/splash-icon.png',
           imageWidth: 96,
         },

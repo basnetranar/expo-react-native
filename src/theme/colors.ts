@@ -1,42 +1,17 @@
-import { Color } from 'expo-router';
-import { Platform } from 'react-native';
-
 export const colors = {
-  background: Platform.select({
-    ios: Color.ios.systemBackground,
-    android: Color.android.dynamic.surface,
-    default: '#FFFFFF',
-  })!,
-  surface: Platform.select({
-    ios: Color.ios.secondarySystemBackground,
-    android: Color.android.dynamic.surfaceContainer,
-    default: '#F2F2F7',
-  })!,
-  text: Platform.select({
-    ios: Color.ios.label,
-    android: Color.android.dynamic.onSurface,
-    default: '#111111',
-  })!,
-  textSecondary: Platform.select({
-    ios: Color.ios.secondaryLabel,
-    android: Color.android.dynamic.onSurfaceVariant,
-    default: '#5F6368',
-  })!,
-  border: Platform.select({
-    ios: Color.ios.separator,
-    android: Color.android.dynamic.outlineVariant,
-    default: '#C7C7CC',
-  })!,
-  primary: Platform.select({
-    ios: Color.ios.systemBlue,
-    android: Color.android.dynamic.primary,
-    default: '#0066CC',
-  })!,
-  destructive: Platform.select({
-    ios: Color.ios.systemRed,
-    android: Color.android.dynamic.error,
-    default: '#BA1A1A',
-  })!,
-  onPrimary: '#FFFFFF',
+  background: '#091015',
+  surface: '#111A21',
+  surfaceRaised: '#18242D',
+  border: '#263743',
+  text: '#F4F7F9',
+  textSecondary: '#9EABB5',
+  primary: '#46EB83',
+  accentBlue: '#3AA7FF',
+  warning: '#F6B94A',
+  destructive: '#FF5656',
+  route: '#58F092',
+  cameraVision: '#3DA5FF',
+  guardVision: '#FF4D4D',
+  onPrimary: '#06100A',
   transparent: 'transparent',
 } as const;

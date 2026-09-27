@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     padding: spacing.md,
     backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
     borderRadius: radius.lg,
     borderCurve: 'continuous',
     boxShadow: shadows.card,

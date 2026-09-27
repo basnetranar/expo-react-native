@@ -1,3 +1,5 @@
-import { HomeScreen } from '@/screens/home/HomeScreen';
+import { Redirect } from 'expo-router';
 
-export default HomeScreen;
+export default function IndexRoute() {
+  return <Redirect href="/home" />;
+}

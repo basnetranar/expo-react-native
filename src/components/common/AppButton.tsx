@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, type ViewStyle, type StyleProp } from 'react-native';
 
 import { AppText } from '@/components/common/AppText';
 import { colors, radius, sizing, spacing } from '@/theme';
@@ -11,6 +11,7 @@ interface Props {
   variant?: Variant;
   disabled?: boolean;
   accessibilityLabel?: string;
+  style?: StyleProp<ViewStyle>;
 }
 
 export function AppButton({
@@ -19,6 +20,7 @@ export function AppButton({
   variant = 'primary',
   disabled,
   accessibilityLabel,
+  style,
 }: Props) {
   const backgroundColor =
     variant === 'primary'
@@ -39,6 +41,7 @@ export function AppButton({
         { backgroundColor },
         pressed && styles.pressed,
         disabled && styles.disabled,
+        style,
       ]}
     >
       <AppText
