@@ -1,6 +1,14 @@
-# Expo Production Boilerplate
+# First Minds
 
-A reusable Expo SDK 57, React Native, Expo Router, and strict TypeScript starter for phone and tablet apps. It provides infrastructure only: **the boilerplate owns infrastructure. Features own business logic.**
+First Minds is a mobile evolution and intelligence simulation where environmental pressures, genetics, learning, behaviour, and culture will eventually interact to produce emergent evolutionary histories.
+
+**Core hook:** Shape the world. Watch intelligence emerge.
+
+**Current milestone:** Application scaffold only.
+
+**Planned next milestone:** Deterministic headless simulation engine.
+
+The project is built on the reusable Expo SDK 57 production boilerplate. The boilerplate continues to own infrastructure; First Minds features own product logic.
 
 ## Getting started
 
@@ -18,7 +26,15 @@ The default `start`, `ios`, and `android` scripts target a development client. U
 
 ## Configure application
 
-Change the reusable placeholders in `src/config/app-values.json` (exposed to application code by `src/config/app.ts`): app name, slug, scheme, version, iOS bundle identifier, and Android package. Development and preview builds automatically add visible name and identifier suffixes so variants can coexist.
+Product metadata is centralized in `src/config/app-values.json` (exposed by `src/config/app.ts`). Development and preview builds automatically add visible name and identifier suffixes so variants can coexist. Replace the placeholder iOS and Android identifiers there before store release.
+
+First Minds branding assets live in `assets/branding/`:
+
+- `icon.png`: square production icon artwork
+- `adaptive-icon-foreground.png`: 1024×1024 transparent Android foreground using the First Minds hand mark inside the adaptive safe zone
+- `splash.png`: portrait splash artwork
+
+The supplied artwork is wired into the app configuration. Validate the icon and splash on preview or production builds because Expo Go and development-client launch presentation differs from store binaries.
 
 Set `EXPO_PUBLIC_APP_ENV` and `EXPO_PUBLIC_API_URL` in local/EAS environments. Never put secrets in `EXPO_PUBLIC_*` values; these are embedded in the client bundle. `.env` files and store credentials are ignored.
 
@@ -90,6 +106,46 @@ yarn update:production:android
 Cold startup checks, downloads, and safely applies a compatible update before interaction. Foreground checks are de-duplicated and limited to once every five minutes; they download but do not restart an active session. `useAppUpdates()` exposes a manual apply action.
 
 OTA is appropriate for JavaScript and assets compatible with the installed native runtime. New native modules, native dependencies, permissions, config plugins, SDK upgrades, and other native configuration changes require a new binary build. Publish production updates deliberately; scripts do not publish or build from CI automatically.
+
+## First Minds routes
+
+- `/lab`
+- `/world/create` and `/world/overview`
+- `/simulation`
+- `/hominin/[id]`
+- `/evolution/timeline`
+- `/discovery/[id]`
+- `/population`
+- `/lineage`
+- `/experiments`
+- `/histories`
+- `/settings`
+
+The future engine boundary is documented in `src/simulation/README.md`. It deliberately contains no simulation mechanics today.
+
+### Alternate histories and checkpoint ownership
+
+Engine checkpoints use schema version `1` and engine compatibility tag
+`first-minds-engine-1`. A checkpoint contains every future-influencing mutable value: seed,
+tick/generation, RNG integer and cached normal state, full world/resource state, predators,
+living and recently deceased hominins, genomes/phenotypes/needs/decisions, memories, learned
+behaviours, action preferences, relationships and reproduction state, lineage identifiers,
+generation telemetry/counters, interventions and pending commands, event-detector state,
+generation summaries/events, deceased inspector archives, lineage registry, and the next entity
+ID. Restore bypasses world and population initialization.
+
+Large checkpoint JSON payloads are stored under the Expo document directory in
+`first-minds/histories`; the existing typed storage abstraction holds only the versioned manifest.
+Payloads use temporary-file replacement, an FNV-1a integrity checksum, startup cleanup for
+temporary/orphan files, and a 50 MB default limit. Main History cannot be deleted. Each child
+branch owns an independent copied head payload, so no mutable engine objects or payload ownership
+are shared. A source checkpoint referenced as a branch origin is protected from deletion, and a
+parent branch with descendants must be deleted last.
+
+Checkpoint policy is manual plus a continually replaced head save on branch switch and app
+backgrounding; the engine never writes a checkpoint per tick. Only the active branch has an engine
+instance. Switching serializes and pauses the source, validates/restores the destination, clears
+agent presentation references, and leaves the destination paused until explicit playback.
 
 ## Architecture
 

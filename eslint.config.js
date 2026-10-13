@@ -7,6 +7,8 @@ module.exports = defineConfig([
   prettierConfig,
   {
     ignores: ['.expo/**', 'coverage/**', 'dist/**', 'ios/**', 'android/**'],
+  },
+  {
     rules: {
       'import/order': ['warn', { alphabetize: { order: 'asc' }, 'newlines-between': 'always' }],
     },

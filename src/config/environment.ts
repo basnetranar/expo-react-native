@@ -28,12 +28,12 @@ export function createEnvironment(source: Record<string, string | undefined>): E
 }
 
 export function validateEnvironment(config: EnvironmentConfig): void {
-  if (!config.apiUrl)
-    throw new Error('EXPO_PUBLIC_API_URL is required. Copy .env.example to .env.');
-  try {
-    new URL(config.apiUrl);
-  } catch {
-    throw new Error('EXPO_PUBLIC_API_URL must be a valid absolute URL.');
+  if (config.apiUrl) {
+    try {
+      new URL(config.apiUrl);
+    } catch {
+      throw new Error('EXPO_PUBLIC_API_URL must be a valid URL.');
+    }
   }
 }
 

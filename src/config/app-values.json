@@ -1,9 +1,9 @@
 {
-  "name": "Heist Planner",
-  "slug": "heist-planner",
-  "scheme": "heistplanner",
+  "name": "First Minds",
+  "slug": "first-minds",
+  "scheme": "firstminds",
   "version": "1.0.0",
-  "easProjectId": "9bf727a5-6895-41eb-86f7-aa8e3f88b6ce",
-  "iosBundleIdentifier": "com.challengemelab.heistplanner",
-  "androidPackage": "com.challengemelab.heistplanner"
+  "easProjectId": "cb4f1536-f484-4e4a-a909-b8efebbddf56",
+  "iosBundleIdentifier": "com.challengemelab.firstminds",
+  "androidPackage": "com.challengemelab.firstminds"
 }

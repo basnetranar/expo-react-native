@@ -1,0 +1,36 @@
+export const onboardingSlides = [
+  {
+    title: 'FIRST MINDS',
+    subtitle: 'Shape the world. Watch intelligence emerge.',
+    body: 'Create a world, follow its inhabitants, and discover how survival, learning, and evolution unfold.',
+    image: require('../../../../assets/onboarding-savannah-hero.png'),
+    logo: require('../../../../assets/first-minds-logo.png'),
+    accent: require('../../../../assets/onboarding-hominin-family.png'),
+    accentLabel: 'A hominin family',
+    highlights: [] as string[],
+  },
+  {
+    title: 'Intelligence Begins with Survival',
+    body: 'Each inhabitant must find food, water, and safety. They learn from experience and sometimes from one another.',
+    image: require('../../../../assets/onboarding-how-it-works.png'),
+    accent: require('../../../../assets/onboarding-hominin-observer.png'),
+    accentLabel: 'A hominin observing its environment',
+    highlights: ['Survival', 'Learning', 'Social behaviour'],
+  },
+  {
+    title: 'Change the World, Not the Individuals',
+    body: 'Adjust food, water, and predator pressure. Watch how environmental conditions influence survival and future generations.',
+    image: require('../../../../assets/onboarding-environment.png'),
+    accent: require('../../../../assets/onboarding-stone-tool.png'),
+    accentLabel: 'A stone tool',
+    highlights: ['Food availability', 'Water availability', 'Predator pressure'],
+  },
+  {
+    title: 'What If Things Happened Differently?',
+    body: "Save a moment in your world's history, create another branch, and explore how different conditions may change its future.",
+    image: require('../../../../assets/onboarding-alternate-histories.png'),
+    accent: require('../../../../assets/onboarding-branch-symbol.png'),
+    accentLabel: 'Branching history symbol',
+    highlights: ['Checkpoints', 'Evolutionary branches', 'Real outcome comparisons'],
+  },
+] as const;

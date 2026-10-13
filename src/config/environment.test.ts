@@ -10,9 +10,20 @@ describe('environment configuration', () => {
     expect(() => validateEnvironment(config)).not.toThrow();
   });
 
-  it('rejects a missing API URL', () => {
+  it('allows an offline configuration without an API URL', () => {
     expect(() =>
       validateEnvironment(createEnvironment({ EXPO_PUBLIC_APP_ENV: 'development' })),
-    ).toThrow('EXPO_PUBLIC_API_URL is required');
+    ).not.toThrow();
+  });
+
+  it('rejects a malformed configured API URL', () => {
+    expect(() =>
+      validateEnvironment(
+        createEnvironment({
+          EXPO_PUBLIC_APP_ENV: 'development',
+          EXPO_PUBLIC_API_URL: 'not-a-url',
+        }),
+      ),
+    ).toThrow('EXPO_PUBLIC_API_URL must be a valid URL');
   });
 });

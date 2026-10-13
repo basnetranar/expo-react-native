@@ -30,7 +30,7 @@ export function DiagnosticsScreen() {
   const confirmReset = () =>
     Alert.alert(
       'Reset storage?',
-      'All local starter and feature data will be permanently removed.',
+      'All local First Minds app and feature data will be permanently removed.',
       [
         { text: 'Cancel', style: 'cancel' },
         {

@@ -20,11 +20,17 @@ interface Props {
 export function ErrorFallback({ error, onRetry }: Props) {
   const layout = useResponsiveLayout();
   const [busy, setBusy] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const run = async (task: () => Promise<unknown>) => {
     setBusy(true);
+    setActionError(null);
     try {
       await task();
+    } catch (reason) {
+      setActionError(
+        reason instanceof Error ? reason.message : 'The recovery action could not be completed.',
+      );
     } finally {
       setBusy(false);
     }
@@ -52,6 +58,11 @@ export function ErrorFallback({ error, onRetry }: Props) {
         <AppText color="secondary" selectable>
           {error.message}
         </AppText>
+        {actionError ? (
+          <AppText color="secondary" selectable>
+            Recovery action failed: {actionError}
+          </AppText>
+        ) : null}
         <View style={styles.actions}>
           <AppButton label="Try Again" onPress={onRetry} disabled={busy} />
           <AppButton label="Restart App" variant="secondary" onPress={() => void run(restart)} />
